@@ -11,6 +11,7 @@
 ,
 		"classnamespace" : "box",
 		"rect" : [ 372.0, 219.0, 692.0, 141.0 ],
+		"rect" : [ 372.0, 219.0, 692.0, 141.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -2232,7 +2233,17 @@
 				}
 
 			}
+<<<<<<< HEAD
  ]
+=======
+<<<<<<< HEAD
+ ],
+		"dependency_cache" : [  ],
+		"autosave" : 0
+=======
+ ]
+>>>>>>> 73dfe71 (add fader patch)
+>>>>>>> 08dca90 (add fader patch)
 	}
 
 }
