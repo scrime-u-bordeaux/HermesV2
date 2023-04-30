@@ -1,0 +1,16 @@
+{
+  name: 'Hermes v2',
+  author: 'João Svidzinski',
+  clients: {
+    'player': {
+      target: 'browser',
+      default: true
+    },
+    'controller': {
+      target: 'browser',
+    },
+    'node-default': {
+      target: 'node',
+    },
+  },
+}

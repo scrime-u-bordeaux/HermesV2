@@ -1,0 +1,29 @@
+:root {
+/* define variables here, e.g. --my-var: myvalue; */
+}
+
+div#main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: start;
+  user-select: none;
+  padding: 5%;
+  font-size: 1.2em;
+}
+
+img.hermes-logo {
+  content: url('/images/hermes-logo.png');
+}
+
+@keyframes button-blink {
+  0% { background-color: black; }
+  10% { background-color: white; }
+  100% { background-color: black; }
+}
+
+div.button-blink {
+  animation-name: button-blink;
+  animation-duration: 1s;
+}
