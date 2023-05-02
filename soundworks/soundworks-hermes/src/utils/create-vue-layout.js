@@ -6,7 +6,6 @@ export default function createLayout(client, $container, App, schema) {
   const app = createApp(App);
   app.use(pinia);
 
-
   const state = client.stateManager.client[schema];
   const values = state.getValues();
 
@@ -18,7 +17,7 @@ export default function createLayout(client, $container, App, schema) {
     state: () => values,
     actions: {
       async set(name, value) {
-        const updates = {};
+        const updates = { clientId: client.id };
         updates[name] = value;
         this[name] = value;
         if (!localCallbackLock) {
@@ -38,11 +37,18 @@ export default function createLayout(client, $container, App, schema) {
 
   const localStore = useLocalStore();
 
-  state.onUpdate(async (newValues, oldValues) => {
-    for (let k in newValues) {
-      localCallbackLock = true;
-      await store.set(k, newValues[k]);
-    }
+  state.onUpdate((newValues, oldValues) => {
+    return new Promise((resolve, reject) => {
+      if (newValues.clientId === client.id) {
+        resolve();
+      }
+  
+      for (let k in newValues) {
+        localCallbackLock = true;
+        store.set(k, newValues[k]);
+      }
+      resolve();
+    });
   }, false);
 
   app.provide('$store', store);

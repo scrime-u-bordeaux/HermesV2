@@ -1,4 +1,11 @@
 export default {
+  // utility to avoid state update loops :
+  // check who sent the message and ignore if self
+  clientId: {
+    type: 'float',
+    default: -1,
+  },
+  // ---------------------------------------------------------------------------
   image1: {
     type: 'string',
     default: '',
@@ -247,25 +254,25 @@ export default {
     }
   },
   // other ---------------------------------------------------------------------
-  pitch: {
-    type: 'float',
-    min: -12,
-    max: 12,
-    default: 0,
+  // pitch: {
+  //   type: 'float',
+  //   min: -12,
+  //   max: 12,
+  //   default: 0,
 
-  },
-  pitches: {
-    type: 'any',
-    default: [ 0, 0, 0, 0 ],
-  },
-  buttons: {
-    type: 'any',
-    default: 0,
-    immediate: true,
-    filterChange: false,
-  },
-  positions: {
-    type: 'any',
-    default: {},
-  },
+  // },
+  // pitches: {
+  //   type: 'any',
+  //   default: [ 0, 0, 0, 0 ],
+  // },
+  // buttons: {
+  //   type: 'any',
+  //   default: 0,
+  //   immediate: true,
+  //   filterChange: false,
+  // },
+  // positions: {
+  //   type: 'any',
+  //   default: {},
+  // },
 };
