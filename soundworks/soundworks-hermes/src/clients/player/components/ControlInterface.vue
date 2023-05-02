@@ -20,11 +20,6 @@
           :value="currentButtonValue"
           @change="onButtonValueChanged"/>
         <div class="spacer"></div>
-        <!-- <multitouch-area
-          ref="multitouchArea"
-          :id="'surface'"
-          :heightPercent="50"
-          :polyphony="6"/> -->
         <x-y-control-surface
           ref="multitouchArea"
           :id="'surface'"
@@ -76,7 +71,7 @@ export default {
     'buttonValue',
     'xyPosition',
   ],
-  components: { CoolSlider, CoolButton, MultitouchArea, XYControlSurface },
+  components: { CoolSlider, CoolButton, XYControlSurface },
   data() {
     return {
     };

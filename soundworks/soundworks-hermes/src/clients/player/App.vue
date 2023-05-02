@@ -105,7 +105,6 @@ export default {
 <script setup>
 import { computed, inject } from 'vue';
 
-// const $client = inject('$client');
 const $store = inject('$store');
 const $localStore = inject('$localStore');
 
