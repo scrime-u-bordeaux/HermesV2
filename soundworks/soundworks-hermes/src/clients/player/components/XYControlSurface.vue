@@ -39,6 +39,7 @@ export default {
   props: [ 'id', 'heightPercent', 'value' ],
   data() {
     return {
+      touchId: -1,
       clientLeft: 0,
       clientTop: 0,
       clientWidth: 0,
@@ -65,8 +66,6 @@ export default {
       return {
         x: this.position.x * (this.dims.width - 2 * r) + r,
         y: this.position.y * (this.dims.height - 2 * r) + r,
-        // x: this.position.x * this.dims.width,
-        // y: this.position.y * this.dims.height,
       };
     },
   },
@@ -91,14 +90,9 @@ export default {
       this.clientWidth = width;
       this.clientHeight = height;
       this.pixelRatio = 100 / width;
-      // console.log(this.$refs['vector'].getBoundingClientRect());
-      // console.log('surface x y w h :');
-      // console.log(x, y, width, height);
     },
-    getPositionFromPointerEvent(e) {
-      const touchEvent = e.changedTouches[0];
-      
-      const r = this.dims.radius;// * this.pixelRatio;
+    getPositionFromPointerEvent(touchEvent) {
+      const r = this.dims.radius;
       const x = Math.min(Math.max(
         (touchEvent.clientX - this.clientLeft - r) /
         (this.clientWidth - r * 2),
@@ -107,30 +101,26 @@ export default {
         (touchEvent.clientY - this.clientTop - r) /
         (this.clientHeight - r * 2),
       0), 1);
-      // const x = Math.min(Math.max(
-      //   (touchEvent.clientX - this.clientLeft) / this.clientWidth,
-      // 0), 1);
-      // const y = Math.min(Math.max(
-      //   (touchEvent.clientY - this.clientTop) / this.clientHeight,
-      // 0), 1);
 
       return { x, y };
     },
     onPointerDown(e) {
       this.onResize();
-      this.focus = true;
-      this.$refs['vector'].setPointerCapture(e.pointerId);
-      this.position = this.getPositionFromPointerEvent(e);
+      this.touchId = e.changedTouches[0].identifier;
+      this.position = this.getPositionFromPointerEvent(e.changedTouches[this.touchId]);
       this.$emit('change', this.position);
     },
     onPointerMove(e) {
-      if (this.focus) {
-        this.position = this.getPositionFromPointerEvent(e);
-        this.$emit('change', this.position);
+      for (let i in e.changedTouches) {
+        if (e.changedTouches[i].identifier === this.touchId) {
+          this.position = this.getPositionFromPointerEvent(e.changedTouches[i]);
+          this.$emit('change', this.position);
+          break;
+        }
       }
     },
     onPointerUp(e) {
-      this.focus = false;
+      this.touchId = -1;
     },
   },
 };

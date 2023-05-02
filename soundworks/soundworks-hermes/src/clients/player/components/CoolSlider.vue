@@ -112,8 +112,8 @@ export default {
       this.clientWidth = width;
       this.pixelRatio = 100 / width;
     },
-    getPositionFromPointerEvent(e) {
-      const touchEvent = e.changedTouches[0];
+    getPositionFromPointerEvent(touchEvent) {
+      // const touchEvent = e.changedTouches[0];
       const realRadius = this.dims.radius / this.pixelRatio;
       return Math.min(Math.max(
         (touchEvent.clientX - this.clientLeft - realRadius) /
@@ -121,19 +121,21 @@ export default {
       0), 1);
     },
     onPointerDown(e) {
-      this.focus = true;
-      this.$refs['bg'].setPointerCapture(e.pointerId);
-      this.position = this.getPositionFromPointerEvent(e);
+      this.touchId = e.changedTouches[0].identifier;
+      this.position = this.getPositionFromPointerEvent(e.changedTouches[this.touchId]);
       this.$emit('change', this.position);
     },
     onPointerMove(e) {
-      if (this.focus) {
-        this.position = this.getPositionFromPointerEvent(e);
-        this.$emit('change', this.position);
+      for (let i in e.changedTouches) {
+        if (e.changedTouches[i].identifier === this.touchId) {
+          this.position = this.getPositionFromPointerEvent(e.changedTouches[i]);
+          this.$emit('change', this.position);
+          break;
+        }
       }
     },
     onPointerUp(e) {
-      this.focus = false;
+      this.touchId = -1;
     },
   },
 };
