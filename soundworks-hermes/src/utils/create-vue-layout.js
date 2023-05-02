@@ -37,18 +37,26 @@ export default function createLayout(client, $container, App, schema) {
 
   const localStore = useLocalStore();
 
-  state.onUpdate((newValues, oldValues) => {
-    return new Promise((resolve, reject) => {
-      if (newValues.clientId === client.id) {
-        resolve();
-      }
+  state.onUpdate(async (newValues, oldValues) => {
+    // return new Promise((resolve, reject) => {
+    //   if (newValues.clientId === client.id) {
+    //     resolve();
+    //   }
   
+    //   for (let k in newValues) {
+    //     localCallbackLock = true;
+    //     store.set(k, newValues[k]);
+    //   }
+    //   resolve();
+    // });
+    if (newValues.clientId !== client.id) {
+      localCallbackLock = true;
       for (let k in newValues) {
-        localCallbackLock = true;
-        store.set(k, newValues[k]);
+        if (k !== 'clientId') {
+          await store.set(k, newValues[k]);
+        }
       }
-      resolve();
-    });
+    }
   }, false);
 
   app.provide('$store', store);
