@@ -1,28 +1,34 @@
 <template>
-  <div
-    ref="button"
-    class="button"
-    :id="id"
-    v-on:touchstart="onPointerDown"
-    v-on:touchend="onPointerUp"
-    :class="{ 'button-blink': blinking }">
-    
+  <div class="button-wrapper">
     <div
-      class="button-content"
-      :class="{ 'button-on': on }">
-      {{ text }}
+      ref="button"
+      class="button"
+      :id="id"
+      v-on:touchstart="onPointerDown"
+      v-on:touchend="onPointerUp"
+      :class="{ 'button-blink': blinking }">
+      
+      <div
+        class="button-content"
+        :class="{ 'button-on': on }">
+        {{ text }}
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-div.button {
-  border: 1px solid white;
+div.button-wrapper {
   background-color: black;
+}
+div.button {
+  font-size: 1.6em;
+  border: 1px solid white;
+  /* background-color: black; */
 }
 div.button-content {
   text-align: center;
-  padding: 2em 0.5em;
+  padding: 3em 0.5em;
   pointer-events: none;
   transition: background-color 0.2s;
   background-color: transparent;
@@ -35,7 +41,7 @@ div.button-on {
 
 <script>
 export default {
-  props: [ 'id', 'class', 'text', 'value' ],
+  props: [ 'id', 'value', 'text' ],
   data() {
     return {
       on: false,
