@@ -78,11 +78,16 @@ const oscServer = new NodeOsc.Server(oscListenPort, '0.0.0.0', () => {
 });
 
 oscServer.on('message', async (msg) => {
-  const prop = propByAddress[msg[0]];
+  const [ a, ...m ] = msg;
+  const prop = propByAddress[a];
   if (prop) {
-    const v = globalSchema[prop].type === 'boolean'
-              ? msg[1] !== 0
-              : msg[1];
+    let v = m[0];
+    if (globalSchema[prop].type === 'boolean') {
+      v = m[0] !== 0;
+    } else if (globalSchema[prop].type === 'any' &&
+               m.length > 1) {
+      v = m;
+    }
 
     const updates = {};
     updates[prop] = v;
