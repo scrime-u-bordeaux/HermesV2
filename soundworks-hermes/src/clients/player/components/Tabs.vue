@@ -1,8 +1,8 @@
 <template>
-  <div id="wrapper">
+  <div class="tabs">
     <div
       class="tab"
-      v-for="i in ntabs"
+      v-for="i in nplayers"
       v-bind:class="selected === i ? 'selected' : ''"
       @pointerdown="onClick(i)"
     >
@@ -12,12 +12,12 @@
 </template>
 
 <style scoped>
-div#wrapper {
+div.tabs {
   display: flex;
   width: 100%;
 }
 div.tab {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   margin: 1px;
   padding: 1em 0.5em;
   text-align: center;
@@ -35,7 +35,7 @@ div.tab.selected {
 
 <script>
 export default {
-  props: [ 'ntabs' ],
+  props: [ 'nplayers' ],
   data() {
     return {
       selected: 1,
