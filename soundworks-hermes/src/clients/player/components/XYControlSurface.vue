@@ -23,8 +23,8 @@
       :cy="cursorPosition.y"
       :r="dims.radius * pixelRatio"
       stroke="white"
-      stroke-width="1"
-      fill="rgba(255,255,255,0.33)"/>
+      stroke-width="2"/>
+      <!-- fill="rgba(255,255,255,0.33)"/> -->
   </svg>
 
 </div>
@@ -45,7 +45,7 @@ export default {
       clientWidth: 0,
       clientHeight: 0,
       pixelRatio: 1,
-      position: { x: 0, y: 0 },
+      position: this.value,
     };
   },
   watch: {
