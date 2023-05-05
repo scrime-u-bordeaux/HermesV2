@@ -9,8 +9,9 @@ div#main {
   align-items: center;
   justify-content: start;
   user-select: none;
-  padding: 5%;
-  font-size: 1.2em;
+  padding: 1.2em;
+  font-size: 1.3em;
+  word-wrap: break-word;
 }
 
 img.hermes-logo {
@@ -18,12 +19,36 @@ img.hermes-logo {
 }
 
 @keyframes button-blink {
-  0% { background-color: black; }
+  0% { background-color: transparent; }
   10% { background-color: white; }
-  100% { background-color: black; }
+  100% { background-color: transparent; }
 }
 
 div.button-blink {
   animation-name: button-blink;
   animation-duration: 1s;
 }
+
+@keyframes sliton-blink {
+  0% { fill: transparent; }
+  10% { fill: white; }
+  100% { fill: transparent; }
+}
+
+rect.sliton-blink {
+  animation-name: sliton-blink;
+  animation-duration: 1s;
+}
+
+@keyframes flink{
+  from  { background-color: red; }
+  to    { background-color: transparent; }
+}
+
+/* todo : use this in ControlInterface !!! */
+/* .element-flink { */
+  /* button in scenes 1 & 4, panel1 in scene 4 */
+  /* animation: flink 0.1s infinite alternate; */ 
+  /* button in scene 4 */
+  /* animation: flink 0.05s infinite alternate; */
+/* } */
