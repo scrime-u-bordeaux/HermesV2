@@ -2,12 +2,12 @@ import { createApp } from 'vue';
 import { createPinia, defineStore } from 'pinia';
 
 export default function createLayout(client, $container, App, schema) {
+  const state = client.stateManager.client[schema];
+  const values = state.getValues();
+
   const pinia = createPinia();
   const app = createApp(App);
   app.use(pinia);
-
-  const state = client.stateManager.client[schema];
-  const values = state.getValues();
 
   // used by store.set and state.update to avoid transmitting own updates and
   // go into endless loops
