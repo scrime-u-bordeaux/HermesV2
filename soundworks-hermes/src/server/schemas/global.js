@@ -72,7 +72,7 @@ export default {
   },
   enc1Visible: {
     type: 'boolean',
-    default: false,
+    default: true,
     meta: {
       address: '/Enc1/visible',
     },
@@ -101,7 +101,7 @@ export default {
   },
   enc2Visible: {
     type: 'boolean',
-    default: false,
+    default: true,
     meta: {
       address: '/Enc2/visible',
     },
@@ -130,7 +130,7 @@ export default {
   },
   enc3Visible: {
     type: 'boolean',
-    default: false,
+    default: true,
     meta: {
       address: '/Enc3/visible',
     },
@@ -159,7 +159,7 @@ export default {
   },
   enc4Visible: {
     type: 'boolean',
-    default: false,
+    default: true,
     meta: {
       address: '/Enc4/visible',
     },
@@ -174,7 +174,7 @@ export default {
   },
   enc1sVisible: {
     type: 'boolean',
-    default: false,
+    default: true,
     meta: {
       address: '/Enc1_s/visible',
     },
@@ -189,7 +189,7 @@ export default {
   },
   enc2sVisible: {
     type: 'boolean',
-    default: false,
+    default: true,
     meta: {
       address: '/Enc2_s/visible',
     },
@@ -204,7 +204,7 @@ export default {
   },
   enc3sVisible: {
     type: 'boolean',
-    default: false,
+    default: true,
     meta: {
       address: '/Enc3_s/visible',
     },
@@ -219,7 +219,7 @@ export default {
   },
   enc4sVisible: {
     type: 'boolean',
-    default: false,
+    default: true,
     meta: {
       address: '/Enc4_s/visible',
     },
