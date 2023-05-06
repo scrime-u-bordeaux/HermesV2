@@ -1,5 +1,6 @@
 :root {
 /* define variables here, e.g. --my-var: myvalue; */
+  --blink-duration: 1s;
 }
 
 div#main {
@@ -26,7 +27,7 @@ img.hermes-logo {
 
 div.button-blink {
   animation-name: button-blink;
-  animation-duration: 1s;
+  animation-duration: var(--blink-duration);
 }
 
 @keyframes sliton-blink {
@@ -37,7 +38,7 @@ div.button-blink {
 
 rect.sliton-blink {
   animation-name: sliton-blink;
-  animation-duration: 1s;
+  animation-duration: var(--blink-duration);
 }
 
 @keyframes flink{
