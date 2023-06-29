@@ -510,7 +510,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 59.0, 106.0, 425.0, 537.0 ],
+						"rect" : [ 1266.0, 391.0, 425.0, 537.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -538,6 +538,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-46",
@@ -1928,7 +1929,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 149.0, 123.0, 109.0, 22.0 ],
-									"text" : "setvar EN_0 true"
+									"text" : "setvar EN_2 true"
 								}
 
 							}

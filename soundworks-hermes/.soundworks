@@ -1,0 +1,5 @@
+{
+  "name": "soundworks-hermes",
+  "eslint": true,
+  "language": "js"
+}
