@@ -2233,17 +2233,7 @@
 				}
 
 			}
-<<<<<<< HEAD
- ]
-=======
-<<<<<<< HEAD
- ],
-		"dependency_cache" : [  ],
-		"autosave" : 0
-=======
- ]
->>>>>>> 73dfe71 (add fader patch)
->>>>>>> 08dca90 (add fader patch)
+		]
 	}
 
 }
